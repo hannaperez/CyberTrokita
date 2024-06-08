@@ -1,7 +1,7 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-uint8_t carMAC[] = {0x24, 0x0A, 0xC4, 0x84, 0x12, 0x34};  // Replace with your car ESP32 MAC address
+uint8_t carMAC[] = {0x70, 0x021, 0x84, 0x7C, 0xC1, 0x56};  // Replace with your car ESP32 MAC address
 
 typedef struct struct_message {
   char command[32];
