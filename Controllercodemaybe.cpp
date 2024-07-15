@@ -19,7 +19,7 @@ void setup() {
     return;
   }
   
-  esp_now_peer_info_t peerInfo;
+  esp_now_peer_info_t peerInfo = {};
   memcpy(peerInfo.peer_addr, carMAC, 6);
   peerInfo.channel = 0;
   peerInfo.encrypt = false;
@@ -34,7 +34,7 @@ void setup() {
 
 void loop() {
   strcpy(myData.command, "FWD");  // Example command
-  esp_err_t result = esp_now_send(carMAC, (uint8_t *) &myData, sizeof(myData));
+  esp_err_t result = esp_now_send(carMAC, (uint8_t *)&myData, sizeof(myData));
 
   if (result == ESP_OK) {
     Serial.println("Sent with success");
