@@ -16,7 +16,7 @@ BluetoothSerial SerialBT; //Bluetooth serial object to be able to use bluetooth
 String MACadd = "40:22:D8:3C:38:52"; //MAC address for JOYSTICK SENDER ESP32
 uint8_t address[6] = {0x40, 0x22, 0xD8, 0x3C, 0x38, 0x52}; 
 String slaveESP32name = "MotorDriverESP32"; //this is the name of the other (slave/reciever) ESP32 
-bool connected; 
+bool connected = false; 
 
 void setup() {
   Serial.begin(115200); //same bps as motor driver code 
@@ -29,7 +29,7 @@ void setup() {
 
   //Starting bluetooth connection  
   SerialBT.begin("JoystickESP32", true); //this is my master esp32, sets device name 
-  Serial.println("This device is your master device.")
+  Serial.println("This device is your master device.");
   connected = SerialBT.connect(slaveESP32name); //connecting specifically to the other esp32
 
   if (connected) {
@@ -78,6 +78,3 @@ void loop() {
   // Delay for stability
   delay(100);
 }
-
-
-
