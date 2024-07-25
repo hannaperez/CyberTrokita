@@ -1,6 +1,14 @@
 #include "BluetoothSerial.h"
 //micro controller -> motor driver -> dual motors 
 
+
+//adding these libraries bc the ledc wasnt being recognized even though we updated the url and the boards 
+//#include <Arduino.h>
+//#include <driver/ledc.h>
+
+//also tried this one and it didnt work 
+//#include "esp32-hal-ledc.h"
+
 // Motor Control Pins 
 // Motor A
 #define IN1 25 //was 13
@@ -33,14 +41,14 @@ void setup() { //setup code runs once
   //Initialize motor state, everything is off/not moving
   digitalWrite(IN1, LOW); // A
   digitalWrite(IN2, LOW);
-  ledcSetup (0, 5000, 8);
-  ledcAttachPin (ENA,0);
++ //ledcSetup (0, 5000, 8);
+  ledcAttach(ENA, 5000, 8);
   ledcWrite(0, 0);
 
   digitalWrite(IN3, LOW); //B
   digitalWrite(IN4, LOW);
-  ledcSetup(1, 5000, 8); 
-  ledcAttachPin(ENB, 1);
+  //ledcSetup(1, 5000, 8); 
+  ledcAttach(ENB, 5000, 8);
   ledcWrite(1, 0);
 
 
